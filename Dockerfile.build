@@ -1,0 +1,15 @@
+FROM maven:3.3.9-jdk-7
+MAINTAINER Mirnes Omerkic <mirnes.omerkic@atlantbh.com>
+
+ENV APP_REPO=https://github.com/momerkic-abh/spring-petclinic.git
+ENV APP_BRANCH=mysql
+ENV BUILD_HOME=/tmp/app-build
+
+RUN mkdir -p $BUILD_HOME
+WORKDIR $BUILD_HOME
+
+RUN git clone $APP_REPO $BUILD_HOME && \
+  git checkout $APP_BRANCH && \
+  git reset --hard origin/$APP_BRANCH
+
+RUN mvn clean package -DskipTests
