@@ -15,6 +15,10 @@ salt $DOCKER_HOST cmd.run "/bin/rm -rf $BUILD_PATH; \
   git checkout $BRANCH "
 
 # Create build container
+<<<<<<< HEAD
 salt $DOCKER_HOST cmd.run "docker rmi -f $BUILD_IMAGE; \
+=======
+salt $DOCKER_HOST cmd.run "docker rmi -f $BILD_IMAGE; \
+>>>>>>> ef8019398280a55298ecf00393d0bd5de6aafcd6
   docker rm -f $BUILD_CONTAINER; \
   docker build -t $BUILD_CONTAINER -f $DOCKERFILE "
